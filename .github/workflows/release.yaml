@@ -43,11 +43,5 @@ jobs:
     - name: setup maltmil
       run: go get github.com/Songmu/maltmill/cmd/maltmill
 
-    - name: show dir
-      run: ls
-
     - name: update tap
-      run: cd homebrew-tap && PATH=~/go/bin:$PATH make releases/github-workflow-brew-tap
-
-    - name: git diff
-      run: git diff
+      run: cd homebrew-tap && git switch -c feature/update-github-workflow-brew-tap-${GITHUB_RUN_ID} && PATH=~/go/bin:$PATH make releases/github-workflow-brew-tap && git add . && git push origin feature/update-github-workflow-brew-tap-${GITHUB_RUN_ID}
