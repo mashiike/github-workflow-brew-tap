@@ -43,5 +43,11 @@ jobs:
     - name: setup maltmil
       run: go get github.com/Songmu/maltmill/cmd/maltmill
 
+    - name: show dir
+      run: ls
+
     - name: update tap
-      run: cd homebrew-tap && make release/github-workflow-brew-tap && git diff
+      run: cd homebrew-tap && make release/github-workflow-brew-tap
+
+    - name: git diff
+      run: git diff
