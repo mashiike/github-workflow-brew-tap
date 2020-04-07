@@ -47,7 +47,7 @@ jobs:
       run: ls
 
     - name: update tap
-      run: cd homebrew-tap && make releases/github-workflow-brew-tap
+      run: cd homebrew-tap && PATH=~/go/bin:$PATH make releases/github-workflow-brew-tap
 
     - name: git diff
       run: git diff
