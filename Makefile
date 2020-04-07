@@ -10,3 +10,6 @@ release:
 
 clean:
 	rm -f cmd/vecho/vecho pkg/*
+
+test:
+	go test -race ./...
