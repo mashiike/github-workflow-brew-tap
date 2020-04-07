@@ -32,3 +32,16 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: PATH=~/go/bin:$PATH make release
+
+    - uses: actions/checkout@v1
+    - name: clone homebrew-tap repository
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        git clone https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/mashiike/homebrew-tap
+
+    - name: setup maltmil
+      run: go get github.com/Songmu/maltmill/cmd/maltmill
+
+    - name: update tap
+      run: cd homebrew-tap && make release/github-workflow-brew-tap && git diff
